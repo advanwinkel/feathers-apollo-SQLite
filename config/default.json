@@ -1,0 +1,13 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "sqlite": "../data/fBlogExample.sqlite",
+  "public": "../public/",
+  "auth": {
+    "idField": "id",
+    "token": {
+      "secret": "juuwIKCh+ajbqMgWIkCM54U3wF3d5Gyzf6akq9GTRTekmog4AgWutgFKtWE1uIQG3OPpemubF5NPknJi4TwxRA=="
+    },
+    "local": {}
+  }
+}

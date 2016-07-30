@@ -1,8 +1,8 @@
-import verifyPassword from './lib/auth';
 
 export default function Resolvers(){
   
     let app = this;
+
     
     let Posts = app.service('posts');
     let Users = app.service('users');
@@ -70,9 +70,6 @@ export default function Resolvers(){
       RootMutation: {
         signUp(root, args, context){
           return Users.create(args)
-        },
-        logIn(root, {username, password}, context){
-          return verifyPassword(app, username, password);
         },
         createPost(root, args, context){
           return Posts.create(args, context);

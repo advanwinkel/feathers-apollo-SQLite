@@ -50,6 +50,7 @@ type RootQuery {
   viewer: User
   author(username: String!): User
   authors: [User]
+  allposts: [Post]
   posts(category: Category): [Post]
   post(id: String!) : Post
 }
@@ -62,11 +63,6 @@ type RootMutation {
     firstName: String
     lastName: String
   ): User
-  
-  logIn (
-    username: String!
-    password: String!
-  ): AuthPayload
 
   createPost (
     title: String!

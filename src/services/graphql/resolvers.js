@@ -46,7 +46,7 @@ export default function Resolvers(){
             return Viewer.find(context);
         },
         author(root, { username }, context){
-          return Posts.find({
+          return Users.find({
             query: {
               username
             }
@@ -54,6 +54,9 @@ export default function Resolvers(){
         },
         authors(root, args, context){
           return Users.find({})
+        },
+        allposts(root, args, context){
+          return Posts.find({});
         },
         posts(root, { category }, context){
           return Posts.find({

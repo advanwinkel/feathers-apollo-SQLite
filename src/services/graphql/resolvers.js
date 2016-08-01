@@ -75,20 +75,27 @@ export default function Resolvers(){
           return Users.create(args)
         },
         createPost(root, args, context){
+          context.token = args.webtoken;
           return Posts.create(args, context);
         },
         editPost(root, args, context){
-          const id = args.id;
+          let id = args.id;
+          context.token = args.webtoken;
+          delete args.webtoken;
           delete args.id;
           return Posts.patch(id, args, context);
         },
         createComment(root, args, context){
+          context.token = args.webtoken;
+          delete args.webtoken;
           return Comments.create(args, context);
         },
-        removePost(root, { id }, context) {
+        removePost(root, { id, webtoken }, context) {
+          context.token = webtoken;
           return Posts.remove(id, context);
         },
-        removeComment(root, { id }, context) {
+        removeComment(root, { id, webtoken }, context) {
+          context.token = webtoken;
           return Comments.remove(id, context);
         }
       }

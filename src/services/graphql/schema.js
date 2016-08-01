@@ -69,11 +69,13 @@ type RootMutation {
     content: String!
     summary: String
     category: Category
+    webtoken: String
   ): Post
   
   createComment (
     postId: String!
     content: String!
+    webtoken: String
   ): Comment
  
   editPost (
@@ -82,14 +84,17 @@ type RootMutation {
     content: String!
     summary: String
     category: Category
+    webtoken: String
   ): Post
 
   removePost (
     id: String! # _id of post to remove
+    webtoken: String
   ): Post
   
   removeComment (
     id: String! # _id of comment to remove
+    webtoken: String
   ): Comment
   
 }

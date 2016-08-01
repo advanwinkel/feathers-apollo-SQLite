@@ -75,7 +75,15 @@ type RootMutation {
     postId: String!
     content: String!
   ): Comment
-  
+ 
+  editPost (
+    id: String! # _id of post to update
+    title: String!
+    content: String!
+    summary: String
+    category: Category
+  ): Post
+
   removePost (
     id: String! # _id of post to remove
   ): Post

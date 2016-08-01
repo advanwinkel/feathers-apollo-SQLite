@@ -77,6 +77,11 @@ export default function Resolvers(){
         createPost(root, args, context){
           return Posts.create(args, context);
         },
+        editPost(root, args, context){
+          const id = args.id;
+          delete args.id;
+          return Posts.patch(id, args, context);
+        },
         createComment(root, args, context){
           return Comments.create(args, context);
         },

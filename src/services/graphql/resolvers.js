@@ -1,4 +1,11 @@
 
+import request from 'request-promise';
+
+const makeRequest = request.defaults({
+  baseUrl: 'http://localhost:3030',
+  json: true
+});
+
 export default function Resolvers(){
   
     let app = this;
@@ -74,16 +81,20 @@ export default function Resolvers(){
         signUp(root, args, context){
           return Users.create(args)
         },
+        logIn(root, {username, password}, context){
+          return makeRequest({
+            uri: '/auth/local',
+            method: 'POST',
+            body: { username: username, password: password }
+          });
+        },        
         createPost(root, args, context){
           context.token = args.webtoken;
-          return Posts.create(args, context);
+          return Posts.create(args.post, context);
         },
         editPost(root, args, context){
-          let id = args.id;
           context.token = args.webtoken;
-          delete args.webtoken;
-          delete args.id;
-          return Posts.patch(id, args, context);
+          return Posts.patch(args.id, args.post, context);
         },
         createComment(root, args, context){
           context.token = args.webtoken;

@@ -64,11 +64,13 @@ type RootMutation {
     lastName: String
   ): User
 
+  logIn (
+    username: String!
+    password: String!
+  ): AuthPayload
+
   createPost (
-    title: String!
-    content: String!
-    summary: String
-    category: Category
+    post: postInput
     webtoken: String
   ): Post
   
@@ -80,10 +82,7 @@ type RootMutation {
  
   editPost (
     id: String! # _id of post to update
-    title: String!
-    content: String!
-    summary: String
-    category: Category
+    post: postInput
     webtoken: String
   ): Post
 
